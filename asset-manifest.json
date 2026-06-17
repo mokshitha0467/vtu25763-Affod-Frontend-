@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/vtu25763-Affod-Frontend-/static/css/main.3720010f.css",
-    "main.js": "/vtu25763-Affod-Frontend-/static/js/main.76715a61.js",
+    "main.js": "/vtu25763-Affod-Frontend-/static/js/main.5b568538.js",
     "static/js/453.76973d9d.chunk.js": "/vtu25763-Affod-Frontend-/static/js/453.76973d9d.chunk.js",
     "index.html": "/vtu25763-Affod-Frontend-/index.html",
     "main.3720010f.css.map": "/vtu25763-Affod-Frontend-/static/css/main.3720010f.css.map",
-    "main.76715a61.js.map": "/vtu25763-Affod-Frontend-/static/js/main.76715a61.js.map",
+    "main.5b568538.js.map": "/vtu25763-Affod-Frontend-/static/js/main.5b568538.js.map",
     "453.76973d9d.chunk.js.map": "/vtu25763-Affod-Frontend-/static/js/453.76973d9d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3720010f.css",
-    "static/js/main.76715a61.js"
+    "static/js/main.5b568538.js"
   ]
 }
