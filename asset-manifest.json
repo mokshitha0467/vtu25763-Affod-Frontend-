@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/vtu25763-Affod-Frontend-/static/css/main.5f3c396a.css",
+    "main.js": "/vtu25763-Affod-Frontend-/static/js/main.96c46e1e.js",
+    "static/js/453.76973d9d.chunk.js": "/vtu25763-Affod-Frontend-/static/js/453.76973d9d.chunk.js",
+    "index.html": "/vtu25763-Affod-Frontend-/index.html",
+    "main.5f3c396a.css.map": "/vtu25763-Affod-Frontend-/static/css/main.5f3c396a.css.map",
+    "main.96c46e1e.js.map": "/vtu25763-Affod-Frontend-/static/js/main.96c46e1e.js.map",
+    "453.76973d9d.chunk.js.map": "/vtu25763-Affod-Frontend-/static/js/453.76973d9d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f3c396a.css",
+    "static/js/main.96c46e1e.js"
+  ]
+}
