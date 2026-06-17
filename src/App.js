@@ -4,14 +4,14 @@ import "./App.css";
 
 function App() {
   const mockData = [
-    { id: 1, title: "Google hiring drive tomorrow", notification_type: "Placement", timestamp: "2024-06-17T10:30:00Z" },
-    { id: 2, title: "Amazon internship shortlist", notification_type: "Placement", timestamp: "2024-06-17T08:30:00Z" },
-    { id: 3, title: "Infosys campus drive", notification_type: "Placement", timestamp: "2024-06-16T10:30:00Z" },
-    { id: 4, title: "TCS hiring open", notification_type: "Placement", timestamp: "2024-06-15T10:30:00Z" },
-    { id: 5, title: "Semester results released", notification_type: "Result", timestamp: "2024-06-17T09:30:00Z" },
-    { id: 6, title: "Internal marks published", notification_type: "Result", timestamp: "2024-06-17T07:30:00Z" },
-    { id: 7, title: "Revaluation results out", notification_type: "Result", timestamp: "2024-06-10T10:30:00Z" },
-    { id: 8, title: "Semester timetable updated", notification_type: "Result", timestamp: "2024-06-09T10:30:00Z" }
+    { id: 1, title: "Google hiring drive tomorrow", notification_type: "Placement", timestamp: "2024-06-17T10:30:00Z", detail: "Google is visiting campus for recruitment drive" },
+    { id: 2, title: "Amazon internship shortlist", notification_type: "Placement", timestamp: "2024-06-17T08:30:00Z", detail: "You have been shortlisted for Amazon internship program" },
+    { id: 3, title: "Infosys campus drive", notification_type: "Placement", timestamp: "2024-06-16T10:30:00Z", detail: "Infosys campus hiring drive scheduled on June 20th" },
+    { id: 4, title: "TCS hiring open", notification_type: "Placement", timestamp: "2024-06-15T10:30:00Z", detail: "TCS is hiring graduates for permanent positions" },
+    { id: 5, title: "Semester results released", notification_type: "Result", timestamp: "2024-06-17T09:30:00Z", detail: "Semester 6 results have been published on the portal" },
+    { id: 6, title: "Internal marks published", notification_type: "Result", timestamp: "2024-06-17T07:30:00Z", detail: "Internal assessment marks are now available for download" },
+    { id: 7, title: "Revaluation results out", notification_type: "Result", timestamp: "2024-06-10T10:30:00Z", detail: "Revaluation results have been declared" },
+    { id: 8, title: "Semester timetable updated", notification_type: "Result", timestamp: "2024-06-09T10:30:00Z", detail: "New semester timetable is available for your batch" }
   ];
 
   const [list, setList] = React.useState(mockData);
@@ -23,7 +23,7 @@ function App() {
   const [user, setUser] = React.useState("");
   const [pass, setPass] = React.useState("");
   const [logged, setLogged] = React.useState(false);
-  const [error, setError] = React.useState("");
+  const [selectedNotif, setSelectedNotif] = React.useState(null);
 
   React.useEffect(function() {
     setLoading(true);
@@ -47,19 +47,19 @@ function App() {
   const paged = filtered.slice(start, start + limit);
   const totalPages = Math.ceil(filtered.length / limit);
 
-  function clickCard(id) {
-    if (!clicked.includes(id)) {
-      setClicked([...clicked, id]);
+  function clickCard(item) {
+    setSelectedNotif(item);
+  }
+
+  function closeModal() {
+    if (selectedNotif && !clicked.includes(selectedNotif.id)) {
+      setClicked([...clicked, selectedNotif.id]);
     }
+    setSelectedNotif(null);
   }
 
   function submitLogin() {
-    if (user === "mokshitha" && pass === "1234") {
-      setLogged(true);
-      setError("");
-    } else {
-      setError("Wrong username or password");
-    }
+    setLogged(true);
   }
 
   if (!logged) {
@@ -71,7 +71,6 @@ function App() {
           <input value={user} onChange={function(e) { setUser(e.target.value); }} />
           <label>Password</label>
           <input type="password" value={pass} onChange={function(e) { setPass(e.target.value); }} />
-          {error ? <div className="loginError">{error}</div> : null}
           <button className="loginButton" onClick={submitLogin}>Sign in</button>
         </div>
       </div>
@@ -111,10 +110,8 @@ function App() {
 
       <div className="dashMain">
         <div className="dashTopBar">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <h1>Campus Notifications</h1>
-            <button onClick={function() { setLogged(false); setUser(""); setPass(""); }}>Logout</button>
-          </div>
+          <h1>Campus Notifications</h1>
+          <button className="logoutBtn" onClick={function() { setLogged(false); setUser(""); setPass(""); }}>Logout</button>
         </div>
 
         <div className="dashFeed">
@@ -124,7 +121,7 @@ function App() {
             <div className="dashCardList">
               {paged.map(function(item) {
                 return (
-                  <div key={item.id} className={clicked.includes(item.id) ? "dashCard opened-card" : "dashCard new-card"} onClick={function() { clickCard(item.id); }}>
+                  <div key={item.id} className={clicked.includes(item.id) ? "dashCard opened-card" : "dashCard new-card"} onClick={function() { clickCard(item); }}>
                     <div className="dashCardHeader">
                       <h3>{item.title}</h3>
                       <span className="dashTag">{item.notification_type}</span>
@@ -145,6 +142,20 @@ function App() {
           </div>
         ) : null}
       </div>
+
+      {selectedNotif ? (
+        <div className="modalOverlay" onClick={closeModal}>
+          <div className="modalContent" onClick={function(e) { e.stopPropagation(); }}>
+            <div className="modalDetail">
+              <p><strong>{selectedNotif.title}</strong></p>
+              <p><strong>Type:</strong> {selectedNotif.notification_type}</p>
+              <p><strong>Details:</strong> {selectedNotif.detail}</p>
+              <p><strong>Date:</strong> {new Date(selectedNotif.timestamp).toLocaleString()}</p>
+            </div>
+            <button className="modalButton" onClick={closeModal}>OK</button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
