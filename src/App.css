@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+}
+
+#root {
+  display: flex;
+  height: 100vh;
+}
+
+.dashContainer {
+  display: flex;
+  width: 100%;
+}
+
+.dashSidebar {
+  width: 250px;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.dashSidebar h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #007bff;
+}
+
+.dashStats {
+  margin-bottom: 25px;
+}
+
+.dashStatCard {
+  background: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 3px solid #007bff;
+  border-radius: 3px;
+}
+
+.dashStatNum {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.dashStatLabel {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.dashMain {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashTopBar {
+  background: white;
+  padding: 15px 25px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dashTopBar h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.dashFeed {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.dashCardList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dashCard {
+  background: white;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dashCard:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.new-card {
+  border-left: 4px solid #007bff;
+  background: #fafbff;
+}
+
+.opened-card {
+  border-left: 4px solid #ccc;
+  background: #f0f0f0;
+  opacity: 0.8;
+}
+
+.dashCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.dashCardHeader h3 {
+  font-size: 14px;
+  margin: 0;
+  flex: 1;
+}
+
+.dashTag {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.dashCardStatus {
+  font-size: 11px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.dashLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 16px;
+  color: #666;
+}
+
+.dashEmpty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+.dashPagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: white;
+  border-top: 1px solid #ddd;
+}
+
+.dashPageInfo {
+  font-size: 12px;
+  color: #666;
+}
+
+button {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+button:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.MuiFormControl-root {
+  margin-bottom: 15px !important;
+}
+
+.MuiSelect-root {
+  padding: 8px !important;
+  font-size: 13px !important;
+}
+
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f0f2f7;
+}
+
+.loginBox {
+  width: 320px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.loginBox h1 {
+  margin: 0 0 18px;
+  font-size: 22px;
+  color: #222;
+}
+
+.loginBox label {
+  display: block;
+  margin: 10px 0 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+.loginBox input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.loginError {
+  margin-top: 12px;
+  color: #c00;
+  font-size: 13px;
+}
+
+.loginButton {
+  width: 100%;
+  margin-top: 16px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.loginButton:hover {
+  background: #0056b3;
+}
